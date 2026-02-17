@@ -14,7 +14,7 @@ global.globalJailed = new Map();
 const globalCooldowns = new Map();
 const jackpotCooldowns = new Map();
 
-const WARNINGS_FILE = 'warnings.json';
+const WARNINGS_FILE = './sessions/warnings.json';
 const JACKPOT_WIN_PATH = './win.jpeg';   
 const JACKPOT_LOSE_PATH = './lose.jpeg'; 
 
@@ -46,7 +46,7 @@ function saveWarnings() {
 
 const client = new Client({
     authStrategy: new LocalAuth({
-        dataPath: './sessions' // ده الفولدر اللي هيتحفظ فيه الـ Auth
+        dataPath: './sessions' // ده اسم الفولدر اللي هيتخزن فيه الـ Auth
     }),
     puppeteer: {
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -1010,6 +1010,7 @@ if (command === '/jackpot force') {
 
 
 client.initialize();
+
 
 
 
