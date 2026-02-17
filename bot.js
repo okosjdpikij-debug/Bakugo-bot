@@ -15,8 +15,8 @@ const globalCooldowns = new Map();
 const jackpotCooldowns = new Map();
 
 const WARNINGS_FILE = 'warnings.json';
-const JACKPOT_WIN_PATH = 'C:/Users/HP/OneDrive/Desktop/Nodejs/win.jpeg';   
-const JACKPOT_LOSE_PATH = 'C:/Users/HP/OneDrive/Desktop/Nodejs/lose.jpeg'; 
+const JACKPOT_WIN_PATH = './win.jpeg';   
+const JACKPOT_LOSE_PATH = './lose.jpeg'; 
 
 const words = [
     "بيت","شارع","قهوة","مدرسة","جامعة","موبايل","كمبيوتر","كتاب","قلم","ورقة",
@@ -245,7 +245,7 @@ if (command === '/me') {
     // 3. إرسال الصورة مع النص (بدون ريبلاي)
     try {
         // نستخدم المسار الكامل للصورة
-        const imagePath = "C:/Users/HP/OneDrive/Desktop/Nodejs/basha.jpeg"; 
+        const imagePath = "./basha.jpeg"; 
         const media = MessageMedia.fromFilePath(imagePath);
         
         // إرسال الميديا ومعاها الـ caption في أمر واحد
@@ -268,7 +268,7 @@ if (command === '/version') {
 
 📌 *𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧𝐬*
 ━━━━━━━━━━━━━━━━━━━
-🤖 𝐕𝐞𝐫𝐬𝐢𝐨𝐧 : 1.3.0
+🤖 𝐕𝐞𝐫𝐬𝐢𝐨𝐧 : 1.5.9
 
 👑 𝐎𝐖𝐍𝐄𝐑 : 𝐁𝐀𝐊𝐔𝐆𝐎 💥
 
@@ -378,7 +378,7 @@ if (command === '/jackpot') {
 if (command === '/hohos') {
     try {
         // حدد مسار ملف الفيديو عندك
-        const videoPath = 'C:/Users/HP/OneDrive/Desktop/Nodejs/hohos.mp4';
+        const videoPath = "./hohos.mp4";
 
         // تحميل الفيديو كـ Media
         const videoMessage = MessageMedia.fromFilePath(videoPath);
@@ -1016,4 +1016,5 @@ if (command === '/jackpot force') {
 
 
 client.initialize();
+
 
