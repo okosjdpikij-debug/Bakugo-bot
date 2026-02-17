@@ -47,15 +47,15 @@ function saveWarnings() {
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
-        executablePath: '/usr/bin/google-chrome-stable', // ده المسار اللي الـ Docker بيثبت فيه الكروم
+        headless: true, // ضروري جداً عشان ميفتحش واجهة رسومية تسحب رام
         args: [
-            '--no-sandbox', 
+            '--no-sandbox',
             '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage',
-            '--disable-accelerated-2d-canvas',
-            '--no-first-run',
+            '--disable-dev-shm-usage', // ببيخلي المتصفح يستخدم الهارد بدل الرام لو الرام خلصت
+            '--disable-gpu', // بيقفل معالج الرسوميات لأنه ملوش لازمة في السيرفر
             '--no-zygote',
-            '--disable-gpu'
+            '--single-process', // بيخلي الكروم يشتغل كعملية واحدة بدل ما يفتح 10 عمليات
+            '--disable-extensions' // بيقفل أي إضافات ملهاش لازمة بتبطأ التشغيل
         ],
     }
 });
@@ -1005,5 +1005,6 @@ if (command === '/jackpot force') {
         console.error('⚠️ حصل خطأ برميجي:', error);
     }
 });
+
 
 client.initialize();
