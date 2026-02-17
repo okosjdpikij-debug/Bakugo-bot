@@ -4,8 +4,7 @@
   "description": "WhatsApp Bot",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js",
-    "prestart": "rm -rf .cache/puppeteer"
+    "start": "node bot.js"
   },
   "dependencies": {
     "axios": "^1.13.5",
