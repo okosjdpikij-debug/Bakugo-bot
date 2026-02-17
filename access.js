@@ -7,11 +7,20 @@ module.exports = async (message, client, OWNER_NUMBERS) => {
     const body = message.body.trim();
     const sender = message.author || message.from;
 
-    const saveOwners = (newList) => {
-        const filePath = path.join(__dirname, 'owners.js');
-        const content = `module.exports = ${JSON.stringify(newList, null, 4)};`;
+const saveOwners = (newList) => {
+    // التعديل هنا: بنحفظ الملف جوه فولدر sessions عشان الـ Volume يحميه
+    const filePath = path.join(__dirname, 'sessions', 'owners.js');
+    
+    // بنحفظ البيانات بصيغة JSON عشان تكون أسرع وأضمن في الحفظ
+    const content = JSON.stringify(newList, null, 4);
+    
+    try {
         fs.writeFileSync(filePath, content, 'utf8');
-    };
+        console.log('✅ تم حفظ الصلاحيات بنجاح في الخزنة');
+    } catch (err) {
+        console.error('❌ فشل في حفظ الصلاحيات:', err);
+    }
+};
 
     // 1. إضافة صلاحية (/add)
     if (body.startsWith('/add')) {
@@ -63,4 +72,5 @@ module.exports = async (message, client, OWNER_NUMBERS) => {
             await client.sendMessage(message.from, listMsg, { mentions: OWNER_NUMBERS });
         }
     }
+
 };
