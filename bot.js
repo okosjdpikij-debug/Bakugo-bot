@@ -61,7 +61,15 @@ const client = new Client({
 });
 
 // --- 2. أحداث التشغيل ---
-client.on('qr', qr => qrcode.generate(qr, { small: true }));
+client.on('qr', (qr) => {
+    // هيطبع لك الـ QR في الـ Logs كالعادة
+    qrcode.generate(qr, {small: true});
+    
+    // وكمان هيطبع لك رابط، خده كوبي وافتحه في صفحة جديدة هتلاقي الـ QR واضح جداً
+    console.log('لو الـ QR مش واضح، افتح الرابط ده صوره:');
+    console.log(`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(qr)}`);
+});
+
 client.on('ready', () => console.log('✅ البوت شغال وجاهز لاستقبال أوامرك يا بطل!'));
 
 // --- 3. الـ Listener الرئيسي ---
@@ -1008,3 +1016,4 @@ if (command === '/jackpot force') {
 
 
 client.initialize();
+
