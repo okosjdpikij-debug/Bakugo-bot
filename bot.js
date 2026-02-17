@@ -45,18 +45,12 @@ function saveWarnings() {
 }
 
 const client = new Client({
-    authStrategy: new LocalAuth(),
+    authStrategy: new LocalAuth({
+        dataPath: './sessions' // ده الفولدر اللي هيتحفظ فيه الـ Auth
+    }),
     puppeteer: {
-        headless: true, // ضروري جداً عشان ميفتحش واجهة رسومية تسحب رام
-        args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage', // ببيخلي المتصفح يستخدم الهارد بدل الرام لو الرام خلصت
-            '--disable-gpu', // بيقفل معالج الرسوميات لأنه ملوش لازمة في السيرفر
-            '--no-zygote',
-            '--single-process', // بيخلي الكروم يشتغل كعملية واحدة بدل ما يفتح 10 عمليات
-            '--disable-extensions' // بيقفل أي إضافات ملهاش لازمة بتبطأ التشغيل
-        ],
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        headless: true
     }
 });
 
@@ -1016,5 +1010,6 @@ if (command === '/jackpot force') {
 
 
 client.initialize();
+
 
 
