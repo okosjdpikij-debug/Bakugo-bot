@@ -5,7 +5,7 @@
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js",
-    "prestart": "rm -rf /home/container/.cache/puppeteer"
+    "prestart": "rm -rf .cache/puppeteer"
   },
   "dependencies": {
     "axios": "^1.13.5",
