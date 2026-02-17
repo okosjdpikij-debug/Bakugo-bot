@@ -4,7 +4,8 @@
   "description": "WhatsApp Bot",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node bot.js",
+    "prestart": "rm -rf /home/container/.cache/puppeteer"
   },
   "dependencies": {
     "axios": "^1.13.5",
@@ -12,7 +13,7 @@
     "node-fetch": "^3.3.2",
     "qrcode-terminal": "^0.12.0",
     "translate-google": "^1.5.0",
-    "whatsapp-web.js": "^1.34.6",
-    "puppeteer": "^21.0.0"
+    "whatsapp-web.js": "^1.23.0",
+    "puppeteer": "^24.1.1"
   }
 }
